@@ -1,5 +1,3 @@
-# swiggy-automation-bot
-
 #  Swiggy Voice Ordering Bot
 
 A Python automation bot that uses voice commands to search food items on Swiggy and automatically add them to the cart using Selenium and Speech Recognition.
