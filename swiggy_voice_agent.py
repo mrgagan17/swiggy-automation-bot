@@ -20,10 +20,10 @@ try:
 except Exception:
     pass
 
-# 🔹 Your dedicated SwiggyBot profile
+# Your dedicated SwiggyBot profile
 profile_path = r"YOUR_CHROME_PROFILE_PATH"
 
-# 🎤 Voice input
+# Voice input
 def get_food_items():
     r = sr.Recognizer()
     text = ""
@@ -35,18 +35,18 @@ def get_food_items():
             print("🔊 Listening... Speak your food items now (e.g. 'pizza and burger')")
             audio = r.listen(source, timeout=10, phrase_time_limit=10)
             
-        print("🧠 Processing voice...")
+        print("Processing voice...")
         text = r.recognize_google(audio)
-        print(f"🗣️ You said: {text}")
+        print(f"You said: {text}")
     except Exception as e:
-        print(f"⚠️ Voice recognition failed or microphone not accessible: {e}")
-        print("⌨️ Falling back to manual text entry...")
+        print(f"Voice recognition failed or microphone not accessible: {e}")
+        print("Falling back to manual text entry...")
         text = input("Enter food (example: pizza and burger): ")
 
     items = [x.strip() for x in text.replace(",", " and ").split("and") if x.strip()]
     return items
 
-# 🌐 Browser setup
+# Browser setup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -93,7 +93,7 @@ def search_and_add_item(driver, item):
         time.sleep(2)
         search_box.send_keys(Keys.ENTER)
 
-        print(f"🔍 Searching for {item}")
+        print(f"Searching for {item}")
         time.sleep(5)
 
         # click first restaurant/item result
@@ -119,12 +119,12 @@ def search_and_add_item(driver, item):
         time.sleep(3)
 
     except Exception as e:
-        print(f"❌ Error with {item}: {e}")
-# 🚀 Main
+        print(f"Error with {item}: {e}")
+# Main
 def main():
     items = get_food_items()
     if not items:
-        print("❌ No food items detected. Exiting...")
+        print("No food items detected. Exiting...")
         return
 
     driver = launch_browser()
@@ -133,7 +133,7 @@ def main():
     for item in items:
         search_and_add_item(driver, item)
 
-    print("\n✅ All items processed. You can now place your order manually.")
+    print("\nAll items processed. You can now place your order manually.")
     input("Press ENTER to close browser...")
     driver.quit()
 
